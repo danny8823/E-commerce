@@ -92,7 +92,17 @@ const itemController = {
                 error: err.message
            })
         })
-        
-})}
+    }),
+
+    delete: asyncHandler(async(req,res) => {
+        const {itemName} = req.body
+
+        await Item.deleteOne({itemName})
+
+        res.json({
+            message: 'This item has been deleted'
+        })
+    })
+}
 
 module.exports = itemController

@@ -4,8 +4,7 @@ require('dotenv').config()
 const isAuthenticated = async (req,res,next) => {
     const headerObj = req.headers;
     const token = headerObj?.authorization?.split(" ")[1]
-
-    console.log(token)
+    
     const verifyToken = jwt.verify(token, process.env.JWT_SECRET, (err,decoded) => {
         if(err) {
             return false;
