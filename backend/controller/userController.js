@@ -78,6 +78,47 @@ const userController = {
         res.json({
             user
         })
+    }),
+
+    changeUserPassword:asyncHandler(async(req,res)=> {
+        const {newPassword} = req.body
+        const user = await User.findById(req.user)
+        if(!user) {
+            throw new Error("User not found")
+        }
+
+        const salt = await bcrypt.genSalt(10)
+
+        const hashedPassword = await bcrypt.hash(newPassword, salt)
+
+        user.password = hashedPassword;
+
+        await user.save({
+            validateBeforeSave: false
+        })
+
+        res.json({
+            message: "Password changed successfully"
+        })
+    }),
+
+    updateUserProfile:asyncHandler(async(req,res)=>{
+        const {email,username} = req.body
+        const updatedUser  = await User.findByIdAndUpdate(
+            req.user,
+            {
+                username,
+                email
+            },
+            {
+                new: true
+            }
+        )
+
+        res.json({
+            message: "User profile updated successfully",
+            updatedUser
+        })
     })
 }
 

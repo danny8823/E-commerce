@@ -1,10 +1,10 @@
 const express = require('express')
 const userController = require('../controller/userController')
 const isAuthenticated = require('../middlewares/isAuthorized')
-const router = express.Router()
+const userRouter = express.Router()
 
-router.post('/api/users/register', userController.register)
-router.post('/api/users/login', userController.login)
-router.get('/api/users/profile', isAuthenticated, userController.profile)
+userRouter.post('/api/users/register', userController.register)
+userRouter.post('/api/users/login', userController.login)
+userRouter.get('/api/users/profile', isAuthenticated, userController.profile)
 
-module.exports = router 
+module.exports = userRouter 
