@@ -3,6 +3,7 @@ const userRouter = require('./routes/userRoutes')
 const app = express();
 const mongoose = require('mongoose');
 const itemRouter = require('./routes/itemRoutes');
+const cors = require('cors')
 
 require('dotenv').config()
 
@@ -12,6 +13,11 @@ mongoose.connect(process.env.MONGO_URL).then(()=>{
     console.log('ERROR:',error.message)
 })
 
+const corsOption = {
+    origin: ["http://localhost:3000"]
+}
+
+app.use(cors(corsOption))
 app.use(express.json())
 
 app.use('/', userRouter)
