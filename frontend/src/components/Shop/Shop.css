@@ -1,0 +1,12 @@
+.shop-navbar {
+    width: 80%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.shop-navbar > a {
+    color: black;
+}

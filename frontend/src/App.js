@@ -8,6 +8,7 @@ import Login from './components/Users/Login';
 import Register from './components/Users/Register';
 import Dashboard from './components/Users/Dashboard';
 import Contact from './components/Contact/Contact';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path = '/register' element = {<Register/>}/>
         <Route path = '/dashboard' element = {<Dashboard/>}/>
       </Routes>
+      <Footer/>
     </BrowserRouter>
   )
 }

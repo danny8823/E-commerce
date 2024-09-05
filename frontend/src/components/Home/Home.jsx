@@ -9,13 +9,13 @@ const Home = () => {
       <div>
         <p id = 'home-title'>Don't Shank Golf Shop</p>
       </div>
-      <div>
+      <div className = 'home-img-container'>
         <img className = 'home-img' src = {HeroImg} alt = 'golfball on grass'/>
       </div>
       <div>
         <p className = 'home-desc'>Your one stop premier golf shop.</p>
       </div>
-      <div>
+      <div className = 'home-img-container'>
         <img className = 'home-img' src = {HeroImg2} alt = 'golf clubs and balls'/>
       </div>
       <div>
