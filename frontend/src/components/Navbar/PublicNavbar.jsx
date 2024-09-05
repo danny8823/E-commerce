@@ -9,7 +9,6 @@ const PublicNavbar = () => {
       <Link to = '/'>Home</Link>
       <Link to = '/shop'>Shop</Link>
       <Link to = '/about'>About</Link>
-      <Link to = '/contact'>Contact</Link>
     </div>
     <div>
       <Link to = '/register'>Register</Link>

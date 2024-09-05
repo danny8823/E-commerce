@@ -7,7 +7,6 @@ import About from './components/About/About';
 import Login from './components/Users/Login';
 import Register from './components/Users/Register';
 import Dashboard from './components/Users/Dashboard';
-import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 
 
@@ -19,7 +18,6 @@ function App() {
         <Route path = '/' element ={<Home/>}/>
         <Route path = '/shop' element = {<Shop/>}/>
         <Route path = '/about' element = {<About/>}/>
-        <Route path = '/contact' element = {<Contact/>}/>
         <Route path = '/login' element = {<Login/>}/>
         <Route path = '/register' element = {<Register/>}/>
         <Route path = '/dashboard' element = {<Dashboard/>}/>

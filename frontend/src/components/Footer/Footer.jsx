@@ -1,6 +1,8 @@
 import React from 'react'
 import './Footer.css'
 import { Link } from 'react-router-dom'
+import { FaPhone } from "react-icons/fa6";
+import { AiTwotoneMail } from "react-icons/ai";
 
 const Footer = () => {
   return (
@@ -9,7 +11,8 @@ const Footer = () => {
             <Link to = '/'>Home</Link>
             <Link to = '/shop'>Shop</Link>
             <Link to = '/about'>About</Link>
-            <Link to = '/contact'>Contact</Link>
+            <Link><AiTwotoneMail className = 'contact-icons'/>   Email</Link>
+            <Link><FaPhone className = 'contact-icons'/>1-800-GOLF</Link>
         </div>
     </div>
   )
