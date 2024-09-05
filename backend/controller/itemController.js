@@ -1,6 +1,5 @@
 const asyncHandler = require('express-async-handler')
 const Item = require('../model/Item')
-const User = require('../model/User')
 
 const itemController = {
     list: asyncHandler(async(req,res) => {

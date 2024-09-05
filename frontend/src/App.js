@@ -1,14 +1,18 @@
-
 import './App.css';
-import { listItemsApi } from './services/itemServices';
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Home from './components/Home/Home';
+import PublicNavbar from './components/Navbar/PublicNavbar';
+
 
 function App() {
-  listItemsApi()
   return (
-    <div>
-      App
-    </div>
-  );
+    <BrowserRouter>
+      <PublicNavbar/>
+      <Routes>
+        <Route path = '/' element ={<Home/>}/>
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App;

@@ -1,0 +1,19 @@
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    height: 60px;
+    position: sticky
+}
+
+a {
+    text-decoration: none;
+    margin: 5px;
+    font-size: 25px;
+    color: white;
+}
+
+a:visited {
+    color: white;
+}
