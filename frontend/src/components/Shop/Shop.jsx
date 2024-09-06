@@ -17,12 +17,13 @@ const Shop = () => {
         <p>Gloves</p>
         <p>Bags</p>
       </div>
-      <div>
+      <div className = 'product-container'>
         {items?.map((item) => (
-          <div key = {item._id}>
-            <h3>{item.itemName}</h3>
-            <p>{item.price}</p>
-            <img src ={item.image} alt= 'produce-image'/>
+          <div className = 'product-card' key = {item._id}>
+            <img className = 'product-img' src ={item.image} alt= 'produce-image'/>
+            <p className = 'product-title'>{item.itemName}</p>
+            <br/>
+            <p className = 'product-price'>${item.price}</p>
           </div>
         ))}
       </div>
