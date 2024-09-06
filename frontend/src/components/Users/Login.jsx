@@ -32,6 +32,9 @@ const Login = () => {
 
   return (
     <form onSubmit = {formik.handleSubmit}>
+      {isPending && <h1>One second!</h1>}
+      {isSuccess && <h1>Login successful.</h1>}
+      {isError && <h1>{error.response.data.message}</h1>}
       <label htmlFor = "email">Email Address</label>
       <input 
         id = "email"
