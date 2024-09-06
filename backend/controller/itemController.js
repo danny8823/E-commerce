@@ -13,9 +13,9 @@ const itemController = {
         }
     }),
     add: asyncHandler(async(req,res) => {
-        const { itemName,price,quantity,description,type} = req.body
+        const { itemName,price,quantity,description,category,image} = req.body
 
-        if(!itemName || !price || !quantity || !type) {
+        if(!itemName || !price || !quantity || !category) {
             throw new Error('Please fill out all fields.')
         }
 
@@ -24,7 +24,8 @@ const itemController = {
             price,
             quantity,
             description,
-            type
+            image,
+            category
         })
 
         res.json({
@@ -34,8 +35,8 @@ const itemController = {
                 itemName,
                 price,
                 quantity,
-                description,
-                type
+                image,
+                category
             }
         })
     }),
@@ -63,7 +64,7 @@ const itemController = {
     }),
 
     update: asyncHandler(async(req,res) => {
-        const {itemName,newItemName,price,quantity,description,type} = req.body
+        const {itemName,newItemName,price,quantity,description,image,category} = req.body
 
         const item = await Item.findOneAndUpdate(
             {
@@ -74,7 +75,8 @@ const itemController = {
                 price,
                 quantity,
                 description,
-                type
+                image,
+                category,
             },
             {
                 new: true

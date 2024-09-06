@@ -8,12 +8,16 @@ import Login from './components/Users/Login';
 import Register from './components/Users/Register';
 import Dashboard from './components/Users/Dashboard';
 import Footer from './components/Footer/Footer';
+import { useSelector } from 'react-redux';
+import PrivateNavBar from './components/Navbar/PrivateNavBar';
 
 
 function App() {
+  const user = useSelector((state)=>state?.auth?.user)
+  console.log("THIS IS USER",user)
   return (
     <BrowserRouter>
-      <PublicNavbar/>
+      {user ? <PrivateNavBar/> : <PublicNavbar/>}
       <Routes>
         <Route path = '/' element ={<Home/>}/>
         <Route path = '/shop' element = {<Shop/>}/>

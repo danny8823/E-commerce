@@ -19,9 +19,13 @@ const itemSchema = new mongoose.Schema(
             type: String,
             default: 'Product description'
         },
-        type: {
+        image: {
             type: String,
-            required: true
+        },
+        category: {
+            type: String,
+            required: true,
+            enum: ['clubs','balls','gloves','bags']
         }
     }
 )   

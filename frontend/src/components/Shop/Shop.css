@@ -7,6 +7,7 @@
     margin: 0 auto;
 }
 
-.shop-navbar > a {
+.shop-navbar > p {
     color: black;
+    font-size: 20px;
 }
