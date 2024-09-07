@@ -6,15 +6,15 @@ import Shop from './components/Shop/Shop';
 import About from './components/About/About';
 import Login from './components/Users/Login';
 import Register from './components/Users/Register';
-import Dashboard from './components/Users/Dashboard';
 import Footer from './components/Footer/Footer';
 import { useSelector } from 'react-redux';
 import PrivateNavBar from './components/Navbar/PrivateNavBar';
+import UserProfile from './components/Users/UserProfile';
 
 
 function App() {
   const user = useSelector((state)=>state?.auth?.user)
-  console.log("THIS IS USER",user)
+
   return (
     <BrowserRouter>
       {user ? <PrivateNavBar/> : <PublicNavbar/>}
@@ -24,7 +24,7 @@ function App() {
         <Route path = '/about' element = {<About/>}/>
         <Route path = '/login' element = {<Login/>}/>
         <Route path = '/register' element = {<Register/>}/>
-        <Route path = '/dashboard' element = {<Dashboard/>}/>
+        <Route path = '/profile' element = {<UserProfile/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>
