@@ -104,6 +104,7 @@ const userController = {
 
     updateUserProfile:asyncHandler(async(req,res)=>{
         const {email,username} = req.body
+        console.log('backend update user profile fired')
         const updatedUser  = await User.findByIdAndUpdate(
             req.user,
             {

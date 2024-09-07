@@ -24,7 +24,7 @@ export const registerAPI = async({email,password,username}) => {
     return response.data
 }
 
-export const changePasswordAPI = async(newPassword) => {
+export const changePasswordAPI = async({newPassword}) => {
     const response = await axios.put(`${BASE_URL}/users/change-password`, {
         newPassword
     },{
@@ -37,7 +37,8 @@ export const changePasswordAPI = async(newPassword) => {
 }
 
 export const updateProfileAPI = async({email,username}) => {
-    const response = await axios.put(`${BASE_URL}/users/change-profile`, {
+    console.log('update profile api fired')
+    const response = await axios.put(`${BASE_URL}/users/update-profile`, {
         email, username
     },
     {
