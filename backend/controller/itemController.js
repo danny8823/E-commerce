@@ -8,12 +8,16 @@ const itemController = {
         if(category === 'all') {
             const items = await Item.find()
             res.json(items)
-        }
-
-        if(category) {
+        } else {
             const items = await Item.find({category})
             res.json(items)
         }
+    }),
+    single_item: asyncHandler(async(req,res) => {
+        const {id} = req.params
+        console.log('single_item fired', id)
+        const item = await Item.findById(id)
+        res.json(item)
     }),
     add: asyncHandler(async(req,res) => {
         const { itemName,price,quantity,description,category,image} = req.body

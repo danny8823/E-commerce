@@ -10,6 +10,7 @@ import Footer from './components/Footer/Footer';
 import { useSelector } from 'react-redux';
 import PrivateNavBar from './components/Navbar/PrivateNavBar';
 import UserProfile from './components/Users/UserProfile';
+import SingleProduct from './components/Product/SingleProduct';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path = '/login' element = {<Login/>}/>
         <Route path = '/register' element = {<Register/>}/>
         <Route path = '/profile' element = {<UserProfile/>}/>
+        <Route path = '/item/:id' element = {<SingleProduct/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>

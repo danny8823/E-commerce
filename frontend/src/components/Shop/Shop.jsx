@@ -2,34 +2,40 @@ import React, { useEffect, useState } from 'react'
 import './Shop.css'
 import { listItemsApi } from '../../services/itemServices'
 import { useQuery } from '@tanstack/react-query'
+import { useNavigate } from 'react-router-dom'
 
 const Shop = () => {
-
-  const [category, setCategory] = useState()
+  const navigate = useNavigate()
+  const [category, setCategory] = useState('all')
 
   const {data:items, isError,isLoading,isFetched,error} = useQuery({
     queryFn: ()=>listItemsApi(category),
     queryKey: ['list-items',category]
   })
 
-  const clickHandler = (e) => {
+  const filterClickHandler = (e) => {
     const {id} = e.target
-    console.log(id)
     setCategory(id)
+  }
+
+  const productClickHandler = (id) => {
+    navigate(`/item/${id}`)
   }
 
   return (
     <div>
       <div className = 'shop-navbar'>
-        <p onClick={clickHandler} id = 'all'>All</p>
-        <p onClick={clickHandler} id = 'clubs'>Clubs</p>
-        <p onClick={clickHandler} id = 'balls'>Balls</p>
-        <p onClick={clickHandler} id = 'gloves'>Gloves</p>
-        <p onClick={clickHandler} id = 'bags'>Bags</p>
+        <button onClick={filterClickHandler } id = 'all' className = 'filter-button'>All</button>
+        <button onClick={filterClickHandler } id = 'clubs' className = 'filter-button'>Clubs</button>
+        <button onClick={filterClickHandler } id = 'balls' className = 'filter-button'>Balls</button>
+        <button onClick={filterClickHandler } id = 'gloves' className = 'filter-button'>Gloves</button>
+        <button onClick={filterClickHandler } id = 'bags' className = 'filter-button'>Bags</button>
       </div>
+      {isError && <div>Oops.....there was an error.</div>}
+      {isLoading && <div>Loading...one second please.</div>}
       <div className = 'product-container'>
         {items?.map((item) => (
-          <div className = 'product-card' key = {item._id}>
+          <div className = 'product-card' key = {item._id} onClick = {()=>productClickHandler(item._id)}>
             <img className = 'product-img' src ={item.image} alt= 'produce-image'/>
             <p className = 'product-title'>{item.itemName}</p>
             <br/>
