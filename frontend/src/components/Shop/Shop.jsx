@@ -1,21 +1,31 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Shop.css'
 import { listItemsApi } from '../../services/itemServices'
 import { useQuery } from '@tanstack/react-query'
 
 const Shop = () => {
+
+  const [category, setCategory] = useState()
+
   const {data:items, isError,isLoading,isFetched,error} = useQuery({
-    queryFn: listItemsApi,
-    queryKey: ['list-items']
+    queryFn: ()=>listItemsApi(category),
+    queryKey: ['list-items',category]
   })
+
+  const clickHandler = (e) => {
+    const {id} = e.target
+    console.log(id)
+    setCategory(id)
+  }
 
   return (
     <div>
       <div className = 'shop-navbar'>
-        <p>Clubs</p>
-        <p>Balls</p>
-        <p>Gloves</p>
-        <p>Bags</p>
+        <p onClick={clickHandler} id = 'all'>All</p>
+        <p onClick={clickHandler} id = 'clubs'>Clubs</p>
+        <p onClick={clickHandler} id = 'balls'>Balls</p>
+        <p onClick={clickHandler} id = 'gloves'>Gloves</p>
+        <p onClick={clickHandler} id = 'bags'>Bags</p>
       </div>
       <div className = 'product-container'>
         {items?.map((item) => (

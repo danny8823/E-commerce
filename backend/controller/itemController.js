@@ -3,13 +3,16 @@ const Item = require('../model/Item')
 
 const itemController = {
     list: asyncHandler(async(req,res) => {
-        const items = await Item.find()
-        res.send(items)
+        const {category} = req.query;
 
-        if(!items) {
-            res.json({
-                message: 'Error retrieving items.'
-            })
+        if(category === 'all') {
+            const items = await Item.find()
+            res.json(items)
+        }
+
+        if(category) {
+            const items = await Item.find({category})
+            res.json(items)
         }
     }),
     add: asyncHandler(async(req,res) => {
