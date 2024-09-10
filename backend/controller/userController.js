@@ -34,7 +34,8 @@ const userController = {
             token,
             id: user._id,
             email: user.email,
-            username: user.username
+            username: user.username,
+            cart: user.cart
         })
     }),
 
@@ -104,7 +105,6 @@ const userController = {
 
     updateUserProfile:asyncHandler(async(req,res)=>{
         const {email,username} = req.body
-        console.log('backend update user profile fired')
         const updatedUser  = await User.findByIdAndUpdate(
             req.user,
             {
@@ -120,7 +120,8 @@ const userController = {
             message: "User profile updated successfully",
             updatedUser
         })
-    })
+    }),
+
 }
 
 module.exports = userController

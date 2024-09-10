@@ -12,24 +12,23 @@ import PrivateNavBar from './components/Navbar/PrivateNavBar';
 import UserProfile from './components/Users/UserProfile';
 import SingleProduct from './components/Product/SingleProduct';
 
-
 function App() {
   const user = useSelector((state)=>state?.auth?.user)
 
   return (
-    <BrowserRouter>
-      {user ? <PrivateNavBar/> : <PublicNavbar/>}
-      <Routes>
-        <Route path = '/' element ={<Home/>}/>
-        <Route path = '/shop' element = {<Shop/>}/>
-        <Route path = '/about' element = {<About/>}/>
-        <Route path = '/login' element = {<Login/>}/>
-        <Route path = '/register' element = {<Register/>}/>
-        <Route path = '/profile' element = {<UserProfile/>}/>
-        <Route path = '/item/:id' element = {<SingleProduct/>}/>
-      </Routes>
-      <Footer/>
-    </BrowserRouter>
+      <BrowserRouter>
+        {user ? <PrivateNavBar/> : <PublicNavbar/>}
+        <Routes>
+          <Route path = '/' element ={<Home/>}/>
+          <Route path = '/shop' element = {<Shop/>}/>
+          <Route path = '/about' element = {<About/>}/>
+          <Route path = '/login' element = {<Login/>}/>
+          <Route path = '/register' element = {<Register/>}/>
+          <Route path = '/profile' element = {<UserProfile/>}/>
+          <Route path = '/item/:id' element = {<SingleProduct/>}/>
+        </Routes>
+        <Footer/>
+      </BrowserRouter>
   )
 }
 

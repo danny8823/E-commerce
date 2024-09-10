@@ -3,9 +3,13 @@ import './Shop.css'
 import { listItemsApi } from '../../services/itemServices'
 import { useQuery } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
+import { addToCart } from '../../redux/slice/cartSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Shop = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   const [category, setCategory] = useState('all')
 
   const {data:items, isError,isLoading,isFetched,error} = useQuery({
@@ -13,6 +17,12 @@ const Shop = () => {
     queryKey: ['list-items',category]
   })
 
+  const cartClickHandler = ({item}) => {
+    dispatch(addToCart({
+      productId: item._id,
+      quantity: 1
+    }))
+  }
   const filterClickHandler = (e) => {
     const {id} = e.target
     setCategory(id)
@@ -35,11 +45,12 @@ const Shop = () => {
       {isLoading && <div>Loading...one second please.</div>}
       <div className = 'product-container'>
         {items?.map((item) => (
-          <div className = 'product-card' key = {item._id} onClick = {()=>productClickHandler(item._id)}>
-            <img className = 'product-img' src ={item.image} alt= 'produce-image'/>
+          <div className = 'product-card' key = {item._id}>
+            <img className = 'product-img' src ={item.image} alt= 'produce-image' onClick = {()=>productClickHandler(item._id)}/>
             <p className = 'product-title'>{item.itemName}</p>
             <br/>
             <p className = 'product-price'>${item.price}</p>
+            <button onClick={() => {cartClickHandler({item})}}>Add to cart.</button>
           </div>
         ))}
       </div>
