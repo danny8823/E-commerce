@@ -25,3 +25,9 @@ a:visited {
     color: white;
     margin: 5px;
 }
+
+.shopping-cart-icon {
+    background-color: white;
+    width: 40px;
+    height: auto;
+}
