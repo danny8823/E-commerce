@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import PrivateNavBar from './components/Navbar/PrivateNavBar';
 import UserProfile from './components/Users/UserProfile';
 import SingleProduct from './components/Product/SingleProduct';
+import Cart from './components/Cart/Cart';
 
 function App() {
   const user = useSelector((state)=>state?.auth?.user)
@@ -26,6 +27,7 @@ function App() {
           <Route path = '/register' element = {<Register/>}/>
           <Route path = '/profile' element = {<UserProfile/>}/>
           <Route path = '/item/:id' element = {<SingleProduct/>}/>
+          <Route path = '/cart' element = {<Cart/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>

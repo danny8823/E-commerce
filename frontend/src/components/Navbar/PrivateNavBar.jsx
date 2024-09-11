@@ -10,10 +10,9 @@ const PrivateNavBar = () => {
 
   const logoutHandler = () => {
     dispatch(logoutAction()) 
-    localStorage.removeItem('userInfo') 
+    localStorage.removeItem('userInfo')
   }
 
-  const cart = useSelector((state)=>state?.cart.items)
   
   return (
    <div className = 'navbar-container'>
@@ -23,7 +22,7 @@ const PrivateNavBar = () => {
         <Link to = '/about'>About</Link>
       </div>
       <div>
-        <Link to = '/cart'>Cart:</Link>
+        <Link to = '/cart'>Cart</Link>
         <Link to = '/profile'>Profile</Link>
         <Link className = 'logout' onClick={logoutHandler}>Logout</Link>
       </div>

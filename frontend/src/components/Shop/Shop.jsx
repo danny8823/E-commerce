@@ -20,7 +20,11 @@ const Shop = () => {
   const cartClickHandler = ({item}) => {
     dispatch(addToCart({
       productId: item._id,
-      quantity: 1
+      itemName: item.itemName,
+      image: item.image,
+      price: item.price,
+      quantity: 1,
+
     }))
   }
   const filterClickHandler = (e) => {
