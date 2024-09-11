@@ -1,4 +1,8 @@
 import './App.css';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from './components/Home/Home';
 import PublicNavbar from './components/Navbar/PublicNavbar';
@@ -15,7 +19,8 @@ import Cart from './components/Cart/Cart';
 
 function App() {
   const user = useSelector((state)=>state?.auth?.user)
-
+  const cart = useSelector((state)=>state?.cart?.items)
+  
   return (
       <BrowserRouter>
         {user ? <PrivateNavBar/> : <PublicNavbar/>}
@@ -27,7 +32,7 @@ function App() {
           <Route path = '/register' element = {<Register/>}/>
           <Route path = '/profile' element = {<UserProfile/>}/>
           <Route path = '/item/:id' element = {<SingleProduct/>}/>
-          <Route path = '/cart' element = {<Cart/>}/>
+          <Route path = '/cart' element = {<Cart cart = {cart}/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>
