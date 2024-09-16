@@ -3,8 +3,10 @@ import './Shop.css'
 import { listItemsApi } from '../../services/itemServices'
 import { useQuery } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
-import { addToCart } from '../../redux/slice/cartSlice'
+// import { addToCart } from '../../redux/slice/cartSlice'
+
 import { useDispatch, useSelector } from 'react-redux'
+import { addItem } from '../../redux/slice/cartSlice'
 
 const Shop = () => {
   const navigate = useNavigate()
@@ -16,16 +18,17 @@ const Shop = () => {
     queryFn: ()=>listItemsApi(category),
     queryKey: ['list-items',category]
   })
-
+  
   const cartClickHandler = ({item}) => {
-    dispatch(addToCart({
-      productId: item._id,
-      itemName: item.itemName,
-      image: item.image,
-      price: item.price,
-      quantity: 1,
+    // dispatch(addToCart({
+    //   productId: item._id,
+    //   itemName: item.itemName,
+    //   image: item.image,
+    //   price: item.price,
+    //   quantity: 1,
 
-    }))
+    // }))
+    dispatch(addItem(item))
   }
   const filterClickHandler = (e) => {
     const {id} = e.target

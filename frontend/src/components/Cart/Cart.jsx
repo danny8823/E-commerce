@@ -1,44 +1,47 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { emptyCart, getTotal } from '../../redux/slice/cartSlice'
 import { Button } from '@mui/material'
 import './Cart.css'
-const Cart = ({cart}) => {
-  // const cart = useSelector((state)=>state?.cart?.items)
+import { addItem, clearCart, decreaseCart, getCart, getTotals, removeFromCart } from '../../redux/slice/cartSlice'
 
+const Cart = () => {
+  const cart = useSelector(getCart)
   const dispatch = useDispatch()
 
-  const [cartTotal, setCartTotal] = useState(0)
-  const [cartItems, setCartItems] = useState([])
+  console.log('THIS IS CART', cart.cartItems)
+  useEffect(() => {
+    dispatch(getTotals())
+  },[cart])
 
-  const emptyCartButtonHandler = () => {
-    dispatch(emptyCart())
+  const emptyCartButtonHandler = (e) => {
+    e.preventDefault()
+    dispatch(clearCart())
   }
 
-  console.log('LOOK HERE', cart)
+  const increaseButtonHandler = ({item}) => {
+    dispatch(addItem(item))
+  }
 
-  useEffect(() => {
-    setCartItems(cart)
-  },[])
+  const decreaseButtonHandler = ({item}) => {
+    dispatch(decreaseCart(item))
+  }
 
-  if(!cartItems || cartItems.length === 0) {
-    return (
-      <div className = 'cart-container'>
-        <h1>CART EMPTY.</h1>
-      </div>
-    )
+  const removeButtonHandler = ({item}) => {
+    dispatch(removeFromCart(item))
   }
   return (
     <div className = 'cart-container'>
-
-      {cartItems?.map((item)=> (
-        <div key = {item._id} className = 'cart-item-card'>
+      {cart?.cartItems?.map((item)=> (
+         <div key = {item._id} className = 'cart-item-card'>
           <p>{item.itemName}</p>
           <img src = {item.image} alt = 'product'/>
-          <p>${item.price} x {item.quantity} = ${item.price * item.quantity}</p>
+          <p>${item.price} x {item.cartQuantity} = ${item.price * item.cartQuantity}</p>
+          <Button variant='contained' onClick={()=>increaseButtonHandler({item})}>+</Button>
+          <Button variant='contained' onClick={()=>decreaseButtonHandler({item})}>-</Button>
+          <Button variant='contained' onClick={()=>removeButtonHandler({item})}>Remove All</Button>
         </div>
       ))}
-      <p>Total:${cartTotal}</p>
+      <p>Total:${cart.cartTotalAmount}</p>
       <Button variant = 'contained' onClick={emptyCartButtonHandler}>Empty</Button>
       <Button variant = 'contained'>Check out</Button>
     </div>
