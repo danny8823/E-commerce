@@ -27,7 +27,7 @@ const Shop = () => {
     const {id} = e.target
     setCategory(id)
   }
-
+  
   const productClickHandler = (id) => {
     navigate(`/item/${id}`)
   }

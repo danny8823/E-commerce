@@ -1,28 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import './NavBar.css'
 import { logoutAction } from '../../redux/slice/authSlice'
-import {Modal, Typography,Button} from '@mui/material'
-import Cart from '../Cart/Cart'
+import { displayCartQuantity, getCart, getTotal } from '../../redux/slice/cartSlice'
 
 const PrivateNavBar = () => {
   const dispatch = useDispatch()
-
-  const [open,setOpen] = useState(false)
-
+  const cartQ = useSelector(getTotal)
   const logoutHandler = () => {
     dispatch(logoutAction()) 
     localStorage.removeItem('userInfo')
   }
 
-  const handleOpen = () => {
-    setOpen(true)
-  }
-
-  const handleClose = () => {
-    setOpen(false)
-  }
   
   return (
    <div className = 'navbar-container'>
@@ -32,18 +22,7 @@ const PrivateNavBar = () => {
         <Link to = '/about'>About</Link>
       </div>
       <div>
-        <Button onClick = {handleOpen}>Cart</Button>
-        <Modal open={open} 
-               onClose={handleClose}
-        > 
-          <div>
-           <Cart/> 
-           <Button onClick = {handleClose}>Close</Button>
-          </div>
-          
-          
-        </Modal>
-        <Link to = '/cart'>Cart</Link>
+        <Link to = '/cart'>Cart : {cartQ}</Link>
         <Link to = '/profile'>Profile</Link>
         <Link className = 'logout' onClick={logoutHandler}>Logout</Link>
       </div>

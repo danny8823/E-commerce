@@ -28,6 +28,7 @@ const Cart = () => {
   const removeButtonHandler = ({item}) => {
     dispatch(removeFromCart(item))
   }
+  
   return (
     <div className = 'cart-body'>
       <div className = 'cart-container'>
