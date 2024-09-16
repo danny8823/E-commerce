@@ -8,7 +8,6 @@ const Cart = () => {
   const cart = useSelector(getCart)
   const dispatch = useDispatch()
 
-  console.log('THIS IS CART', cart.cartItems)
   useEffect(() => {
     dispatch(getTotals())
   },[cart])
@@ -30,20 +29,24 @@ const Cart = () => {
     dispatch(removeFromCart(item))
   }
   return (
-    <div className = 'cart-container'>
-      {cart?.cartItems?.map((item)=> (
-         <div key = {item._id} className = 'cart-item-card'>
-          <p>{item.itemName}</p>
-          <img src = {item.image} alt = 'product'/>
-          <p>${item.price} x {item.cartQuantity} = ${item.price * item.cartQuantity}</p>
-          <Button variant='contained' onClick={()=>increaseButtonHandler({item})}>+</Button>
-          <Button variant='contained' onClick={()=>decreaseButtonHandler({item})}>-</Button>
-          <Button variant='contained' onClick={()=>removeButtonHandler({item})}>Remove All</Button>
+    <div className = 'cart-body'>
+      <div className = 'cart-container'>
+        {cart?.cartItems?.map((item)=> (
+          <div key = {item._id} className = 'cart-item-card'>
+            <p className = 'cart-item-name'>{item.itemName}</p>
+            <img src = {item.image} alt = 'product'/>
+            <p className = 'cart-item-price'>${item.price} x {item.cartQuantity} = ${item.price * item.cartQuantity}</p>
+            <Button variant='contained' onClick={()=>increaseButtonHandler({item})}>+</Button>
+            <Button variant='contained' onClick={()=>decreaseButtonHandler({item})}>-</Button>
+            <Button variant='contained' onClick={()=>removeButtonHandler({item})}>Remove All</Button>
+          </div>
+        ))}
+        <div>
+          <p>Total:${cart.cartTotalAmount}</p>
+          <Button variant = 'contained' onClick={emptyCartButtonHandler}>Empty</Button>
+          <Button variant = 'contained'>Check out</Button>
         </div>
-      ))}
-      <p>Total:${cart.cartTotalAmount}</p>
-      <Button variant = 'contained' onClick={emptyCartButtonHandler}>Empty</Button>
-      <Button variant = 'contained'>Check out</Button>
+      </div>
     </div>
   )
 }

@@ -20,16 +20,9 @@ const Shop = () => {
   })
   
   const cartClickHandler = ({item}) => {
-    // dispatch(addToCart({
-    //   productId: item._id,
-    //   itemName: item.itemName,
-    //   image: item.image,
-    //   price: item.price,
-    //   quantity: 1,
-
-    // }))
     dispatch(addItem(item))
   }
+  
   const filterClickHandler = (e) => {
     const {id} = e.target
     setCategory(id)
