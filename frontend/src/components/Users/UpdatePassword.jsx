@@ -2,7 +2,7 @@ import React from 'react'
 import { useFormik } from 'formik'
 import { useMutation } from '@tanstack/react-query'
 import { changePasswordAPI } from '../../services/userServices'
-
+import './UpdatePassword.css'
 const UpdatePassword = () => {
   const {mutateAsync, isPending, isError, error, isSuccess} = useMutation({
     mutationFn: changePasswordAPI,
@@ -25,7 +25,8 @@ const UpdatePassword = () => {
   })
 
   return (
-    <div>
+    <div className = 'password-container'>
+      <h1>Change Password</h1>
       <form onSubmit={formik.handleSubmit}>
         {isPending && <h1>One second!</h1>}
         {isSuccess && <h1>Login successful!</h1>}

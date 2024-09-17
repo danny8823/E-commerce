@@ -2,7 +2,7 @@ import React from 'react'
 import { Formik, useFormik } from 'formik'
 import { useMutation } from '@tanstack/react-query'
 import { updateProfileAPI } from '../../services/userServices'
-
+import './UpdateProfile.css'
 const UpdateProfile = () => {
 const {mutateAsync, isPending, isError, error, isSuccess} = useMutation({
     mutationFn: updateProfileAPI,
@@ -26,8 +26,9 @@ const {mutateAsync, isPending, isError, error, isSuccess} = useMutation({
     })
 
   return (
-    <div>
-        <form onSubmit = {formik.handleSubmit}>
+    <div className = 'form-container'>
+        <h1>Update Profile</h1>
+        <form className = 'form'onSubmit = {formik.handleSubmit}>
             {isPending && <h1>One second!</h1>}
             {isSuccess && <h1>Update successful!</h1>}
             {isError && <h1>{error.response.data.message}</h1>}

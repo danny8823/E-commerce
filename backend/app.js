@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const itemRouter = require('./routes/itemRoutes');
 const cors = require('cors');
 const Item = require('./model/Item');
+const errorHandler = require('./middlewares/errorHandlerMiddleware');
 
 require('dotenv').config()
 
@@ -23,6 +24,8 @@ app.use(express.json())
 
 app.use('/', userRouter)
 app.use('/', itemRouter)
+
+app.use(errorHandler)
 
 app.listen(process.env.PORT, () => {
     console.log(`Listening to server on port:${process.env.PORT}`)

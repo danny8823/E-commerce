@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import {useMutation} from '@tanstack/react-query'
 import {useDispatch} from 'react-redux'
 import { registerAPI } from '../../services/userServices';
+import './Register.css'
 
 const Register = () => {
   const dispatch = useDispatch()
@@ -32,44 +33,36 @@ const Register = () => {
 
 
   return (
-    <div>
+    <div className = 'form-container'>
       <form onSubmit={formik.handleSubmit}>
         {isPending && <h1>Loading....</h1>}
         {isError && <h1>Error.....</h1>}
         {isSuccess && <h1>Success.....</h1>}
         <h2>Sign up now!</h2>
-        <div>
-          <input 
-            id="username"
-            type="text"
-            {...formik.getFieldProps("username")}
-            placeholder="Username"
+        <input 
+          id="username"
+          type="text"
+          {...formik.getFieldProps("username")}
+          placeholder="Username"
+          />
+        <input 
+            id="email"
+            type="email"
+            {...formik.getFieldProps("email")}
+            placeholder="Email"
             />
-        </div>
-        <div>
-          <input 
-              id="email"
-              type="email"
-              {...formik.getFieldProps("email")}
-              placeholder="Email"
-              />
-        </div>
-        <div>
-          <input 
-              id="password"
-              type="password"
-              {...formik.getFieldProps("password")}
-              placeholder="Password"
-              />
-        </div>
-        <div>
-          <input 
-              id="confirmPassword"
-              type="password"
-              {...formik.getFieldProps("confirmPassword")}
-              placeholder="Confirm Password"
-              />
-        </div>
+        <input 
+            id="password"
+            type="password"
+            {...formik.getFieldProps("password")}
+            placeholder="Password"
+            />
+        <input 
+            id="confirmPassword"
+            type="password"
+            {...formik.getFieldProps("confirmPassword")}
+            placeholder="Confirm Password"
+            />
         <button 
           type="submit"
           >Register</button>
