@@ -47,7 +47,7 @@ const Cart = () => {
             <p className = 'cart-item-price'>${item.price} x {item.cartQuantity} = ${item.price * item.cartQuantity}</p>
             <Button variant='contained' onClick={()=>increaseButtonHandler({item})}>+</Button>
             <Button variant='contained' onClick={()=>decreaseButtonHandler({item})}>-</Button>
-            <Button variant='contained' onClick={()=>removeButtonHandler({item})}>Remove All</Button>
+            <Button variant='contained' onClick={()=>removeButtonHandler({item})}>Remove</Button>
           </div>
         ))}
       </div>

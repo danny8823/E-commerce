@@ -25,3 +25,15 @@
     height: 300px;
     font-size: 50px;
 }
+
+
+@media (max-width: 600px) {
+    #home-title {
+        font-size: 30px;
+    }
+
+    .home-desc {
+        font-size: 25px;
+        text-align: center;
+    }
+}

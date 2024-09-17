@@ -5,6 +5,7 @@ import './NavBar.css'
 import { logoutAction } from '../../redux/slice/authSlice'
 import { getTotal } from '../../redux/slice/cartSlice'
 import { BsCart4 } from "react-icons/bs";
+import { Badge } from '@mui/material'
 
 const PrivateNavBar = () => {
   const dispatch = useDispatch()
@@ -22,8 +23,8 @@ const PrivateNavBar = () => {
         <Link to = '/shop'>Shop</Link>
         <Link to = '/about'>About</Link>
       </div>
-      <div>
-        <Link to = '/cart'><BsCart4 /> {cartQ}</Link>
+      <div className = 'right-nav'>
+        <Link to = '/cart'><Badge badgeContent={cartQ} color="success"><BsCart4 className = 'shopping-cart-icon'/></Badge></Link>
         <Link to = '/profile'>Profile</Link>
         <Link className = 'logout' onClick={logoutHandler}>Logout</Link>
       </div>

@@ -1,5 +1,6 @@
 .about-us-container{
     width: 80%;
+    height: 100vh;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -19,4 +20,11 @@
 
 .about-us-container > h1 {
     font-size: 50px;
+}
+
+
+@media (max-width: 600px) {
+ .about-us-container > p {
+    font-size: 15px;
+ }   
 }

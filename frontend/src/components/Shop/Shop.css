@@ -35,6 +35,7 @@ body {
 
 .product-price {
     font-size: 15px;
+    text-align: center;
 }
 
 .product-img {
@@ -51,4 +52,21 @@ body {
     border: 0px;
     border-radius: 100px;
     background-color: lightgray;
+}
+
+@media (max-width: 600px) {
+    .product-card {
+        width: 250px;
+        height: auto;
+    }
+
+    .product-img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .product-title {
+        font-size: 15px;
+    }
+
 }
