@@ -28,7 +28,15 @@ const Cart = () => {
   const removeButtonHandler = ({item}) => {
     dispatch(removeFromCart(item))
   }
-  
+
+  if (cart.cartItems.length === 0) {
+    return (
+      <div className = 'cart-container'>
+        <h1>Cart is empty.....</h1>
+      </div>
+    )
+  }
+
   return (
     <div className = 'cart-body'>
       <div className = 'cart-container'>
@@ -42,12 +50,14 @@ const Cart = () => {
             <Button variant='contained' onClick={()=>removeButtonHandler({item})}>Remove All</Button>
           </div>
         ))}
-        <div>
-          <p>Total:${cart.cartTotalAmount}</p>
-          <Button variant = 'contained' onClick={emptyCartButtonHandler}>Empty</Button>
-          <Button variant = 'contained'>Check out</Button>
-        </div>
       </div>
+      <div className = 'cart-total'>
+          <div className = 'cart-button'>
+            <Button  variant = 'contained' onClick={emptyCartButtonHandler}>Empty</Button>
+            <Button  variant = 'contained'>Check out</Button>
+          </div>
+          <p>Total - ${cart.cartTotalAmount}</p>
+        </div>
     </div>
   )
 }

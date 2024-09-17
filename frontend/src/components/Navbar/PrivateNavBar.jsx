@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import './NavBar.css'
 import { logoutAction } from '../../redux/slice/authSlice'
-import { displayCartQuantity, getCart, getTotal } from '../../redux/slice/cartSlice'
+import { getTotal } from '../../redux/slice/cartSlice'
+import { BsCart4 } from "react-icons/bs";
 
 const PrivateNavBar = () => {
   const dispatch = useDispatch()
@@ -22,7 +23,7 @@ const PrivateNavBar = () => {
         <Link to = '/about'>About</Link>
       </div>
       <div>
-        <Link to = '/cart'>Cart : {cartQ}</Link>
+        <Link to = '/cart'><BsCart4 /> {cartQ}</Link>
         <Link to = '/profile'>Profile</Link>
         <Link className = 'logout' onClick={logoutHandler}>Logout</Link>
       </div>

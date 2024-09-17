@@ -3,10 +3,9 @@ import './Shop.css'
 import { listItemsApi } from '../../services/itemServices'
 import { useQuery } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
-// import { addToCart } from '../../redux/slice/cartSlice'
-
 import { useDispatch, useSelector } from 'react-redux'
 import { addItem } from '../../redux/slice/cartSlice'
+import { Button } from '@mui/material'
 
 const Shop = () => {
   const navigate = useNavigate()
@@ -50,7 +49,7 @@ const Shop = () => {
             <p className = 'product-title'>{item.itemName}</p>
             <br/>
             <p className = 'product-price'>${item.price}</p>
-            <button onClick={() => {cartClickHandler({item})}}>Add to cart.</button>
+            <Button onClick={() => {cartClickHandler({item})}}>Buy</Button>
           </div>
         ))}
       </div>

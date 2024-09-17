@@ -11,7 +11,7 @@ const Footer = () => {
             <Link to = '/'>Home</Link>
             <Link to = '/shop'>Shop</Link>
             <Link to = '/about'>About</Link>
-            <Link><AiTwotoneMail className = 'contact-icons'/>   Email</Link>
+            <Link><AiTwotoneMail className = 'contact-icons'/> Email</Link>
             <Link><FaPhone className = 'contact-icons'/>1-800-GOLF</Link>
         </div>
     </div>

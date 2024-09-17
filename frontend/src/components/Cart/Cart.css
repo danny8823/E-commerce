@@ -1,9 +1,14 @@
-
+.cart-body {
+    display: flex;
+    flex-direction: column;
+}
 .cart-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: auto;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100%;
     margin: 10px 0 10px 0;
     padding: 10px;
     background-color: azure;
@@ -14,10 +19,9 @@
     align-items: center;
     justify-content: space-between;
     background-color: white;
-    border: 1px solid black;
     margin: 10px;
     padding: 10px;
-    width: 100%;
+    width: 90%;
     height: 150px;
 }
 
@@ -32,3 +36,22 @@
     width: 100px;
     height: 100px;
 }
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.cart-total > p {
+    font-size: 40px;
+}
+
+.cart-button {
+    display: flex;
+    width: 250px;
+    justify-content: space-evenly;
+}
+
