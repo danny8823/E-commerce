@@ -44,5 +44,8 @@ a:visited {
     .shopping-cart-icon {
         width: 25px;
     }
+    .navbar-container{
+        width: 100%;
+    }
     
 }
