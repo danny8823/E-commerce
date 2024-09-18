@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Button } from '@mui/material'
 import './Cart.css'
 import { addItem, clearCart, decreaseCart, getCart, getTotals, removeFromCart } from '../../redux/slice/cartSlice'
+import { Link } from 'react-router-dom'
 
 const Cart = () => {
   const cart = useSelector(getCart)
@@ -11,6 +12,11 @@ const Cart = () => {
   useEffect(() => {
     dispatch(getTotals())
   },[cart])
+
+  const formatter = new Intl.NumberFormat('en-US',{
+    style: 'currency',
+    currency: 'USD'
+  })
 
   const emptyCartButtonHandler = (e) => {
     e.preventDefault()
@@ -44,7 +50,7 @@ const Cart = () => {
           <div key = {item._id} className = 'cart-item-card'>
             <p className = 'cart-item-name'>{item.itemName}</p>
             <img src = {item.image} alt = 'product'/>
-            <p className = 'cart-item-price'>${item.price} x {item.cartQuantity} = ${item.price * item.cartQuantity}</p>
+            <p className = 'cart-item-price'>${item.price} x {item.cartQuantity} = {formatter.format(item.price * item.cartQuantity)}</p>
             <Button variant='contained' onClick={()=>increaseButtonHandler({item})}>+</Button>
             <Button variant='contained' onClick={()=>decreaseButtonHandler({item})}>-</Button>
             <Button variant='contained' onClick={()=>removeButtonHandler({item})}>Remove</Button>
@@ -54,9 +60,9 @@ const Cart = () => {
       <div className = 'cart-total'>
           <div className = 'cart-button'>
             <Button  variant = 'contained' onClick={emptyCartButtonHandler}>Empty</Button>
-            <Button  variant = 'contained'>Check out</Button>
+            <Button  variant = 'contained'><Link to = '/checkout'>Check Out</Link></Button>
           </div>
-          <p>Total - ${cart.cartTotalAmount}</p>
+          <p>Total : {formatter.format(cart.cartTotalAmount)}</p>
         </div>
     </div>
   )

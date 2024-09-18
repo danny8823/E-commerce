@@ -18,6 +18,11 @@ const Shop = () => {
     queryKey: ['list-items',category]
   })
   
+  const formatter = new Intl.NumberFormat('en-US',{
+    style: 'currency',
+    currency: 'USD'
+  })
+
   const cartClickHandler = ({item}) => {
     dispatch(addItem(item))
   }
@@ -48,7 +53,7 @@ const Shop = () => {
             <img className = 'product-img' src ={item.image} alt= 'produce-image' onClick = {()=>productClickHandler(item._id)}/>
             <p className = 'product-title'>{item.itemName}</p>
             <br/>
-            <p className = 'product-price'>${item.price}</p>
+            <p className = 'product-price'>{formatter.format(item.price)}</p>
             <Button onClick={() => {cartClickHandler({item})}}>Buy</Button>
           </div>
         ))}

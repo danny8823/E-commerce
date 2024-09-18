@@ -1,4 +1,3 @@
-import './App.css';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -16,6 +15,7 @@ import PrivateNavBar from './components/Navbar/PrivateNavBar';
 import UserProfile from './components/Users/UserProfile';
 import SingleProduct from './components/Product/SingleProduct';
 import Cart from './components/Cart/Cart';
+import Checkout from './components/Checkout/Checkout';
 
 function App() {
   const user = useSelector((state)=>state?.auth?.user)
@@ -33,6 +33,7 @@ function App() {
           <Route path = '/profile' element = {<UserProfile/>}/>
           <Route path = '/item/:id' element = {<SingleProduct/>}/>
           <Route path = '/cart' element = {<Cart cart = {cart}/>}/>
+          <Route path = '/checkout' element = {<Checkout/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>
